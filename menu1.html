@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Checker</title>
+    <style>
+        span.result {
+            color: #0433FF;
+        }
+        span.note {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Prime checker program</h1>
+<label for="input">Input number: </label>
+<input type="text" id="input">
+<button type="button" onclick="Implement()">Implement</button><br>
+<p>Note: <span id="note" class="note"></span></p>
+<p>Input number 1 to input N</p>
+<p>Input number 2 to check if N is prime</p>
+<p>Input number 3 to show n Prime</p>
+<p>Input number 4 to escape</p>
+<p>Result: <span id="result" class="result"></span></p>
+<script>
+    let N=0;
+    function Implement() {
+        let number = +document.getElementById("input").value;
+        switch (number) {
+            case 1:
+                inputN();
+                break;
+            case 2:
+                isPrime();
+                check();
+                break;
+            case 3:
+                SumPrime();
+                break;
+            case 4:
+                escape();
+                break;
+            default:
+                document.getElementById("note").innerText = "Wrong input";
+        }
+    }
+    function inputN() {
+        N = +prompt("Input N");
+        document.getElementById("result").innerHTML = "N = " + N;
+    }
+    function isPrime(index) {
+        let x = index;
+        if (x<2) {
+            return false;
+        }
+        else {
+            let k;
+            for (k=2;k<x;k++) {
+                console.log(k);
+                if ( x%k===0 ) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    function check() {
+        if (isPrime()) {
+            document.getElementById("result").innerHTML = "N = "+ N + " is a prime";
+        } else {
+            document.getElementById("result").innerHTML = "N = "+ N + " is not a prime";
+        }
+    }
+    function SumPrime() {
+        n = +prompt("Nhap so n");
+        let sum = 0;
+        let j=1;
+        let i=1;
+        while (j<=n) {
+            i++;
+            if (isPrime(i)) {
+                sum = sum + i;
+                j++;
+            }
+        }
+        document.getElementById("result").innerHTML = "Sum = " + sum;
+    }
+    function escape() {
+        document.write("<h1>Thank you!<h1>");
+    }
+</script>
+</body>
+</html>
